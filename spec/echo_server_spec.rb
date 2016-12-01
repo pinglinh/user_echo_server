@@ -3,13 +3,16 @@ require 'spec_helper'
 
 describe UserEcho do
 	it 'prints welcome message when start method is called' do
-		user_view = double("View")
+		user_view = View.new
 		user_echo = UserEcho.new(user_view)
-		expect(user_view).to receive(:print_welcome_message)
-		expect(user_view).to receive(:print_instruction_message)
-		allow(STDIN).to receive(:readline) { 'exit' }
+    result = user_echo.start
+		expect(result.string).to eq(
+      "Welcome!\n"+
+      "Please enter a word to be reprinted, to exit this program please enter exit:\n")
+		# expect(user_view).to receive(:print_instruction_message)
+		# allow(STDIN).to receive(:readline) { 'exit' }
 
-		result = user_echo.start
 
-	end	
+
+	end
 end
