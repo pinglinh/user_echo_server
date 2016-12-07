@@ -7,16 +7,22 @@ class UserEchoServer
 
   def echo_server_start
     @view.welcome_and_instruction_message
-    @user_input = @input.readline.chomp
+    @user_input = readline
     while exit_entered? == false
       @output.puts @user_input
-      @user_input = @input.readline.chomp
+      @user_input = readline
     end
     @view.goodbye_message
   end
 
   def exit_entered?
     @user_input == "exit"
+  end
+
+  def readline
+    @input.readline.chomp
+  rescue EOFError
+    "exit"
   end
 end
 
