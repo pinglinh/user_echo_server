@@ -1,18 +1,34 @@
 require 'echo_server'
 require 'spec_helper'
+require "stringio"
 
-describe UserEcho do
-	it 'prints welcome message when start method is called' do
-		user_view = View.new
-		user_echo = UserEcho.new(user_view)
-    result = user_echo.start
-		expect(result.string).to eq(
+describe UserEchoServer do
+  it "echos what the user wrote" do
+    input = StringIO.new("one\ntwo\nthree\n")
+    output = StringIO.new("")
+    server = UserEchoServer.new(input, output)
+    server.echo_server_start
+    expect(output.string).to eq(
       "Welcome!\n"+
-      "Please enter a word to be reprinted, to exit this program please enter exit:\n")
-		# expect(user_view).to receive(:print_instruction_message)
-		# allow(STDIN).to receive(:readline) { 'exit' }
+      "Enter anything or exit to finish:\n"+
+      "one\n"+
+      "two\n"+
+      "three\n"
+      # "Goodbye!\n"
+    )
+  end
 
-
-
-	end
+  it "ends the server when user enters exit" do
+      input = StringIO.new("one\ntwo\nexit\nfour\n")
+      output = StringIO.new("")
+      server = UserEchoServer.new(input, output)
+      server.echo_server_start
+      expect(output.string).to eq(
+        "Welcome!\n"+
+        "Enter anything or exit to finish:\n"+
+        "one\n"+
+        "two\n"+
+        "Goodbye!\n"
+      )
+  end
 end

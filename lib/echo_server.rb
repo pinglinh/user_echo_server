@@ -35,5 +35,5 @@ class View
     end
 end
 
-server = UserEchoServer.new
-server.echo_server_start
+# server = UserEchoServer.new
+# server.echo_server_start
