@@ -28,11 +28,6 @@ class UserEchoServer
     @user_input == EXIT
   end
 
-  def readline
-    @user_echo_input.read_line
-  rescue EOFError
-    EXIT
-  end
 end
 
 
@@ -47,5 +42,5 @@ end
   #   @user_input = readline
   # end
 
-  server = UserEchoServer.new
-  server.start
+  # server = UserEchoServer.new
+  # server.start
