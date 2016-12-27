@@ -16,7 +16,7 @@ class UserEchoServer
     @command_line_view.instruction_message
     @user_input = @user_echo_input.read_line
     while exit_entered? == false
-      @command_line_view.echo_user_line(@output)
+      @command_line_view.echo_user_line(@user_input)
       @user_input = @user_echo_input.read_line
     end
     @command_line_view.goodbye_message
