@@ -1,5 +1,6 @@
-require 'user_echo_server'
-require 'command_line_view'
+require_relative '../lib/user_echo_server'
+require_relative '../lib/command_line_view'
+require_relative '../lib/user_echo_input'
 require 'spec_helper'
 require "stringio"
 
@@ -33,17 +34,17 @@ describe UserEchoServer do
   end
 
   it 'takes users input' do
-    input = StringIO.new
-    server = UserEchoServer.new(input)
-    read_line = server.start("hello")
-    expect(input.string).to eq("hello")
+    input = StringIO.new("hello\n")
+    user_echo_input = UserEchoInput.new(input)
+    line = user_echo_input.read_line
+    expect(line).to eq("hello")
   end
 
   # it "echos what the user wrote" do
   #   input = StringIO.new("one\ntwo\nthree\n")
   #   output = StringIO.new("")
   #   server = UserEchoServer.new(input, output)
-  #   server.echo_server_start
+  #   server.start
   #   expect(output.string).to eq(
   #     "Welcome!\n"+
   #     "Enter anything or exit to finish:\n"+
