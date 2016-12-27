@@ -14,10 +14,10 @@ class UserEchoServer
   def start
     @command_line_view.welcome_message
     @command_line_view.instruction_message
-    @user_echo_input.read_line
+    @user_input = @user_echo_input.read_line
     while exit_entered? == false
-      @command_line_view.echo_user_line
-      @user_echo_input.read_line
+      @command_line_view.echo_user_line(@output)
+      @user_input = @user_echo_input.read_line
     end
     @command_line_view.goodbye_message
   end
@@ -46,3 +46,6 @@ end
   #   @output.puts @user_input
   #   @user_input = readline
   # end
+
+  server = UserEchoServer.new
+  server.start
