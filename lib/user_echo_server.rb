@@ -29,7 +29,7 @@ class UserEchoServer
   end
 
   def readline
-    @input.readline.chomp
+    @user_echo_input.read_line
   rescue EOFError
     EXIT
   end
