@@ -27,7 +27,6 @@ class UserEchoServer
   def exit_entered?
     @user_input == EXIT
   end
-
 end
 
 
