@@ -26,18 +26,32 @@ describe UserEchoServer do
     expect(output.string).to eq("Goodbye!\n")
   end
 
-  it 'prints out users input with a new line' do
+  it 'prints out users input with a new line - 1 word' do
     output = StringIO.new("")
     view = CommandLineView.new(output)
     user_views = view.echo_user_line("hello")
     expect(output.string).to eq("hello\n")
   end
 
-  it 'takes users input' do
+  it 'prints out users input with a new line - 2 words' do
+    output = StringIO.new("")
+    view = CommandLineView.new(output)
+    user_views = view.echo_user_line("hello linh")
+    expect(output.string).to eq("hello linh\n")
+  end
+
+  it 'takes users input - 1 word' do
     input = StringIO.new("hello\n")
     user_echo_input = UserEchoInput.new(input)
     line = user_echo_input.read_line
     expect(line).to eq("hello")
+  end
+
+  it 'takes users input - 2 words' do
+    input = StringIO.new("hello linh\n")
+    user_echo_input = UserEchoInput.new(input)
+    line = user_echo_input.read_line
+    expect(line).to eq("hello linh")
   end
 
   it "echos what the user wrote" do
