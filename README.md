@@ -1,6 +1,6 @@
 #User Echo Server
 
-This repo has now moved to (here)[https://github.com/pinglinh/user_echo_server_2]
+**This repo has now moved to [here](https://github.com/pinglinh/user_echo_server_2)**
 
 A simple server which takes and returns user's input until they enter "exit' which ultimately stops the server.
 
